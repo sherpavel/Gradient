@@ -10,11 +10,9 @@
 #ui .selector {
     flex: 1;
     border: solid 5px var(--dark-color);
-    border-radius: 20px;
+    border-radius: 10px;
     box-shadow: 10px 10px 10px 0 rgba(20,20,20);
     cursor: pointer;
-    text-align: right;
-    transition: all 0.2s;
 }
 #ui .selector.active {
     border: solid 5px var(--light-color);
@@ -26,10 +24,10 @@
 }
 #ui .selector .close {
     height: max(3vmin, 15px);
-    margin: 0px;
-    padding: 1vmin;
+    margin: 0;
+    padding: 3px;
     background-color: var(--dark-color);
-    border-radius: 0 15px 0 10px;
+    border-radius: 4.5px 0 4.5px 0;
 }
 #ui .selector .close:hover {
     filter: invert();
@@ -39,6 +37,7 @@
     border: solid 5px rgb(51, 51, 51);
     background-color: rgb(204, 204, 204);
     flex: 0 0 9vmax;
+    transition: all 0.2s;
 }
 #ui #adder img {
     width: 100%;

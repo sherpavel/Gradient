@@ -63,7 +63,9 @@ $(document).ready(function() {
 
     // Share btn
     $("#share").on("click", () => {
-        let link = window.location.href + "?" + genURLParams();
+        let link = window.location.href;
+        link = link.substring(0, (link.indexOf("?") < 0 ? link.length : link.indexOf("?")));
+        link += "?" + genURLParams();
         
         // Copy
         copyToClipboard(link);
@@ -161,7 +163,6 @@ function updateCode() {
         text += "};"
     }
     $("#code").text(text);
-
 
 }
 

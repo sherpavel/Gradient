@@ -18,10 +18,6 @@
     border: solid 5px var(--light-color);
     box-shadow: 0 0 20px 0 rgb(20,20,20);
 }
-#ui .selector:hover {
-    border: solid 5px var(--light-color);
-    box-shadow: 0 0 20px 0 rgb(20,20,20);
-}
 #ui .selector .close {
     height: max(3vmin, 15px);
     margin: 0;
@@ -33,9 +29,6 @@
     -ms-transform: translate(-5px, -5px);
     -moz-transform: translate(-5px, -5px);
     -webkit-transform: translate(-5px, -5px);
-}
-#ui .selector .close:hover {
-    filter: invert();
 }
 
 #ui #adder {
@@ -51,9 +44,19 @@
     border-radius: 20px;
     transition: all 0.2s;
 }
-#ui #adder:hover {
-    background-color: rgb(204, 204, 204);
-}
-#ui #adder:hover img {
-    filter: invert();
+
+@media (hover: hover) and (pointer: fine) {
+    #ui .selector:hover {
+        border: solid 5px var(--light-color);
+        box-shadow: 0 0 20px 0 rgb(20,20,20);
+    }
+    #ui .selector .close:hover {
+        filter: invert();
+    }
+    #ui #adder:hover {
+        background-color: rgb(204, 204, 204);
+    }
+    #ui #adder:hover img {
+        filter: invert();
+    }
 }

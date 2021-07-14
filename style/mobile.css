@@ -24,6 +24,9 @@
         width: 90%;
         margin-top: 2vmax;
     }
+    #export #code {
+        font-size: medium;
+    }
     #export .button {
         font-size: large;
     }

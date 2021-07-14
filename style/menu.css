@@ -91,9 +91,6 @@
     -webkit-appearance: none;
     margin-top: -2px;
 }
-#menu #picker * > input::-webkit-slider-thumb:hover {
-    background: rgb(0, 204, 255);
-}
 /* Firefox */
 #menu #picker * > input::-moz-range-thumb {
     box-shadow: none;
@@ -105,9 +102,6 @@
     cursor: pointer;
 
     transform: translateY(6px);
-}
-#menu #picker * > input::-moz-range-thumb:hover {
-    background: rgb(0, 204, 255);
 }
 /* Rest */
 #menu #picker * > input::-ms-thumb {
@@ -146,4 +140,13 @@
 }
 #menu #io input {
     width: 100%;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    #menu #picker * > input::-webkit-slider-thumb:hover {
+        background: rgb(0, 204, 255);
+    }
+    #menu #picker * > input::-moz-range-thumb:hover {
+        background: rgb(0, 204, 255);
+    }
 }

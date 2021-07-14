@@ -80,11 +80,6 @@ body.fade {
     text-decoration: none;
     transition: all 0.2s;
 }
-#title > a:hover {
-    color: hsl(180, 80%, 80%);
-    text-decoration: underline;
-    border: solid 5px var(--light-color);
-}
 #title #instagram {
     background-image: url("../resources/instagram.png");
 }
@@ -98,4 +93,12 @@ body.fade {
 #canvas canvas {
     border-radius: 50px 20px;
     box-shadow: 0 0 20px 10px rgba(20,20,20);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    #title > a:hover {
+        color: hsl(180, 80%, 80%);
+        text-decoration: underline;
+        border: solid 5px var(--light-color);
+    }
 }

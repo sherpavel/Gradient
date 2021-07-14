@@ -19,7 +19,7 @@ class ColorSelector {
                 COLORS.splice(COLORS.indexOf(this), 1);
                 draw();
                 if (dom.hasClass("active")) Menu.reset();
-                // Menu.hide();
+                updateCode();
             });
 
         dom.append(removeBtn);

@@ -7,19 +7,17 @@ class Menu {
         Menu.hue = $("#hue");
         Menu.saturation = $("#saturation");
         Menu.brightness = $("#brightness");
-        // $("#menu").hide();
     }
 
     static show(selector) {
-        $("#menu").fadeIn(200);
         this.selector = selector;
 
         Menu.red.val(selector.rgb[0]);
         Menu.green.val(selector.rgb[1]);
         Menu.blue.val(selector.rgb[2]);
-        Menu.hex.val(rgbToHex(selector.rgb));
+        Menu.hex.val("#" + rgbToHex(selector.rgb));
         let hsb = RGBtoHSV(selector.rgb[0], selector.rgb[1], selector.rgb[2]);
-        Menu.hue.val(Math.round(hsb[0]*100));
+        Menu.hue.val(Math.round(hsb[0]*360));
         Menu.saturation.val(Math.round(hsb[1]*100));
         Menu.brightness.val(Math.round(hsb[2]*100));
 
@@ -43,15 +41,15 @@ class Menu {
 
 
         $(document).on('input', '#hue', () => {
-            selector.rgb = HSVtoRGB(Menu.hue.val()/100, Menu.saturation.val()/100, Menu.brightness.val()/100);
+            selector.rgb = HSVtoRGB(Menu.hue.val()/360, Menu.saturation.val()/100, Menu.brightness.val()/100);
             Menu.update(false);
         });
         $(document).on('input', '#saturation', () => {
-            selector.rgb = HSVtoRGB(Menu.hue.val()/100, Menu.saturation.val()/100, Menu.brightness.val()/100);
+            selector.rgb = HSVtoRGB(Menu.hue.val()/360, Menu.saturation.val()/100, Menu.brightness.val()/100);
             Menu.update(false);
         });
         $(document).on('input', '#brightness', () => {
-            selector.rgb = HSVtoRGB(Menu.hue.val()/100, Menu.saturation.val()/100, Menu.brightness.val()/100);
+            selector.rgb = HSVtoRGB(Menu.hue.val()/360, Menu.saturation.val()/100, Menu.brightness.val()/100);
             Menu.update(false);
         });
     }
@@ -60,13 +58,14 @@ class Menu {
         let selector = this.selector;
         selector.update();
         draw();
+        updateCode();
         Menu.red.val(selector.rgb[0]);
         Menu.green.val(selector.rgb[1]);
         Menu.blue.val(selector.rgb[2]);
-        Menu.hex.val(rgbToHex(selector.rgb));
+        Menu.hex.val("#" + rgbToHex(selector.rgb));
         let hsb = RGBtoHSV(selector.rgb[0], selector.rgb[1], selector.rgb[2]);
         if (slider) {
-            Menu.hue.val(Math.round(hsb[0]*100));
+            Menu.hue.val(Math.round(hsb[0]*360));
             Menu.saturation.val(Math.round(hsb[1]*100));
             Menu.brightness.val(Math.round(hsb[2]*100));
         }
@@ -78,10 +77,6 @@ class Menu {
         Menu.blue.unbind();
         Menu.hex.unbind();
         $(document).unbind();
-    }
-
-    static hide() {
-        $("#menu").fadeOut(200);
     }
 
     static reset() {

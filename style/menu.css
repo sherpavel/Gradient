@@ -1,20 +1,21 @@
 #menu {
-    background-color: var(--light-color);
+    background-color: var(--dark-color);
     color: rgb(126, 126, 126);
     position: absolute;
-    margin-left: 5%;
-    padding: 2vmax;
-    border-radius: 20px;
-    box-shadow: 10px 10px 20px 0 black;
-    width: min(45vw, 300px);
+    margin: 0;
+    padding: 2vw;
+    /* border-radius: 20px; */
+    box-shadow: 5px 5px 20px 5px rgb(20, 20, 20);
+    width: 38.5%;
+    left: 5%;
 }
 
 #menu input[type=text] {
-    font-size: 1.5vmax;
+    font-size: larger;
     border: none;
     border-radius: 5px;
-    background-color: var(--dark-color);
-    color: var(--light-color);
+    background-color: var(--light-color);
+    color: var(--dark-color);
     text-align: center;
     outline: none;
     box-sizing: border-box;
@@ -29,15 +30,17 @@
 }
 #menu #picker * > p {
     margin: 0;
-    font-size: 1.5vmax;
+    font-size: large;
+    color: var(--light-color);
 }
 #menu #picker * > input {
     margin: 0;
+    margin-top: 12px;
     width: 100%;
     height: 12px;
     transform: translateY(-8px);
     -webkit-appearance: none;
-    background-color: var(--dark-color);
+    background-color: var(--light-color);
 }
 
 
@@ -51,10 +54,10 @@
     cursor: pointer;
     animate: 0.2s;
     box-shadow: none;
-    background: var(--dark-color);
+    background: var(--light-color);
 }
 #menu #picker * > input:focus::-webkit-slider-runnable-track {
-    background: #00000000;
+    background: var(--light-color);
 }
 /* Firefox */
 #menu #picker * > input::-moz-range-track {
@@ -63,7 +66,7 @@
     cursor: pointer;
     animate: 0.2s;
     box-shadow: none;
-    background: var(--dark-color);
+    background: var(--light-color);
 }
 /* Rest */
 #menu #picker * > input::-ms-track {
@@ -72,7 +75,7 @@
     cursor: pointer;
     animate: 0.2s;
     box-shadow: none;
-    background: var(--dark-color);
+    background: var(--light-color);
 }
 
 /* Chrome */
@@ -86,7 +89,10 @@
     cursor: pointer;
 
     -webkit-appearance: none;
-    margin-top: 0vmax;
+    margin-top: -2px;
+}
+#menu #picker * > input::-webkit-slider-thumb:hover {
+    background: rgb(0, 204, 255);
 }
 /* Firefox */
 #menu #picker * > input::-moz-range-thumb {
@@ -98,7 +104,10 @@
     background: #ffffff;
     cursor: pointer;
 
-    transform: translateY(8px);
+    transform: translateY(6px);
+}
+#menu #picker * > input::-moz-range-thumb:hover {
+    background: rgb(0, 204, 255);
 }
 /* Rest */
 #menu #picker * > input::-ms-thumb {

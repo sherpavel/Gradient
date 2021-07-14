@@ -3,17 +3,26 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
+
+        <link rel="apple-touch-icon" sizes="180x180" href="./resources/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="32x32" href="./resources/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="./resources/favicon-16x16.png">
-        <link rel="icon" type="image/x-icon" href="./resources/favicon.ico">
+        <link rel="manifest" href="./resources/site.webmanifest">
+        <link rel="mask-icon" href="./resources/safari-pinned-tab.svg" color="#5bbad5">
+        <meta name="msapplication-TileColor" content="#da532c">
+        <meta name="theme-color" content="#ffffff">
+
         <title>Gradient</title>
-        <meta name="description" content="Portfolio">
+        <meta name="description" content="Gradient tool">
+        <meta name="keywords" content="Gradient, Colors, CSS, JavaScript">
+        <meta name="author" content="Pavel Sher">
     
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
         <link rel="stylesheet" href="./style/index.css">
         <link rel="stylesheet" href="./style/menu.css">
         <link rel="stylesheet" href="./style/selectors.css">
+        <link rel="stylesheet" href="./style/export.css">
+        <link rel="stylesheet" href="./style/mobile.css">
     
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/p5@1.3.1/lib/p5.min.js"></script>
@@ -24,7 +33,11 @@
     </head>
     <body>
         <script>document.body.className = 'fade'</script>
-        <div id="title"><h1>Gradient</h1></div>
+        <div id="title">
+            <h1>Gradient</h1>
+            <a href="https://www.instagram.com/algrtm.art/" target="_blank" class="link" id="instagram"></a>
+            <a href="https://github.com/sherpavel" target="_blank" class="link" id="github"></a>
+        </div>
         <div id="canvas"></div>
         <div id="ui">
             <div id="adder" class="selector">
@@ -35,7 +48,7 @@
             <div id="picker">
                 <div>
                     <p>Hue</p>
-                    <input id="hue" type="range" min="0" max="100" value="0" step="1">
+                    <input id="hue" type="range" min="0" max="360" value="0" step="1">
                 </div>
                 <div>
                     <p>Saturation</p>
@@ -62,6 +75,16 @@
                     <input id="blue" type="text" placeholder="B">
                     <label>B</label>
                 </div>
+            </div>
+        </div>
+        <div id="export">
+            <div id="code"></div>
+            <select id="lang" class="button"></select>
+            <div id="export_group">
+                <div id="copy" class="button">
+                    <img src="./resources/copy.png" alt="Copy">
+                </div>
+                <div id="share" class="button"><span>Share link</span></div>
             </div>
         </div>
     </body>

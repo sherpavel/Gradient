@@ -3,8 +3,8 @@
     --light-color: rgb(238, 238, 238);
     --secondary-color: rgb(100, 100, 100);
 
-    --gradient-start: rgb(74, 0, 224);
-    --gradient-end: rgb(142, 45, 226);
+    --gradient-start: rgb(0, 255, 255);
+    --gradient-end: rgb(204, 0, 255);
     --gradient: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
 
     --backdrop-blur: blur(50px);
@@ -36,11 +36,65 @@ body.fade {
 
 #title {
     text-align: center;
-    padding: 2vh 0 2vh 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    grid-gap: 4vw;
+    height: 8vh;
+    margin: 0 5% 0 5%;
 }
+#title > * {
+    align-self: center;
+}
+
 #title h1 {
+    display: inline-block;
     margin: 0;
+    font-size: 4vh;
+    flex-grow: 1;
+    text-align: left;
 }
+
+#title > a {
+    display: inline-block;
+    width: min(5vh, 60px);
+    height: min(5vh, 60px);
+    flex: 0 0 min(5vh, 60px);
+
+    margin: 0;
+    padding: 0;
+    border-radius: 10px;
+    border: solid 5px var(--dark-color);
+    /* box-shadow: 5px 5px 20px 5px rgb(20, 20, 20); */
+
+    background-repeat: no-repeat;
+    background-position: center;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+    background-size: contain;
+
+    font-size: 28px;
+    color: white;
+    background-color: var(--dark-color);
+    text-decoration: none;
+    transition: all 0.2s;
+}
+#title > a:hover {
+    color: hsl(180, 80%, 80%);
+    text-decoration: underline;
+    border: solid 5px var(--light-color);
+}
+#title #instagram {
+    background-image: url("../resources/instagram.png");
+}
+#title #github {
+    background-image: url("../resources/github.png");
+}
+/* #title * > img {
+    width: 100%;
+    max-width: 100%;
+} */
 
 #canvas {
     margin-left: 5%;
@@ -48,40 +102,4 @@ body.fade {
 #canvas canvas {
     border-radius: 50px 20px;
     box-shadow: 0 0 20px 10px rgba(20,20,20);
-}
-
-
-
-a.link {
-    font-size: 28px;
-    color: var(--dark-color);
-    background-color: var(--light-color);
-    text-decoration: none;
-    margin: 0em 1em 0em 1em;
-    padding: 0.2em;
-    padding-top: 0.1em;
-    transition: all 0.2s;
-}
-a.link:hover {
-    color: hsl(180, 80%, 80%);
-    background-color: rgba(0, 0, 0, 0);;
-    text-decoration: underline;
-}
-
-footer {
-    position: relative;
-    bottom: 0;
-    right: 0;
-    padding: 10px 20px 20px 20px;
-    color: var(--secondary-color);
-    background-color: var(--dark-color);
-    font-size: 18px;
-    text-align: right;
-}
-hr {
-    width: 100%;
-    height: 5px;
-    background-color: var(--secondary-color);
-    border: none;
-    margin: 0;
 }

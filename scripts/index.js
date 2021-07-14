@@ -23,19 +23,148 @@ $(document).ready(function() {
             COLORS.push(selector);
             $(selector.dom).insertBefore($("#adder"));
             draw();
-            // Menu.hide();
+            updateCode();
         });
-
     for (let i = 0; i < COLORS.length; i++) {
         $(COLORS[i].dom).insertBefore($("#adder"));
     }
 
+    // Menu
     Menu.setup();
     COLORS[0].dom.click();
+
+    // Code block
+    updateCode(LANG.JS_ARRAY);
+
+    // Lang options
+    let select = $("#lang");
+    for (const [key, value] of Object.entries(LANG)) {
+        select.append($(`<option value="${key}">${LANG_NAME[key]}</option>`));
+    }
+    select.on("change", function() {
+        lang = LANG[this.value];
+        updateCode();
+    });
+
+    // Copy btn
+    $("#copy").on("click", () => {
+        copyToClipboard($("#code").text());
+        $("#copy").children(":first")
+            .attr("src", "./resources/checkmark.png")
+            .css("filter", "invert()");
+        $("#copy").css("background-color", "var(--dark-color)");
+        setTimeout(() => {
+            $("#copy").children(":first")
+                .attr("src", "./resources/copy.png")
+                .removeAttr("style");
+            $("#copy").removeAttr("style");
+        }, 500);
+    });
+
+    // Share btn
+    $("#share").on("click", () => {
+        let link = window.location.href + "?" + genURLParams();
+        
+        // Copy
+        copyToClipboard(link);
+
+        // Display msg
+        $("#share").children(":first")
+            .text("Coppied!")
+            .css("color", "hsl(130, 100%, 50%)");
+        $("#share").css("background-color", "var(--dark-color)");
+        setTimeout(() => {
+            $("#share").children(":first")
+                .text("Share link")
+                .removeAttr("style");
+            $("#share").removeAttr("style");
+        }, 500);
+    });
 });
 
-
 // Misc functions
+function copyToClipboard(str) {
+    let el = document.createElement('textarea');
+    el.value = str;
+    el.setAttribute('readonly', '');
+    el.style = {position: 'absolute', left: '-9999px'};
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+}
+
+function genURLParams() {
+    let url = "";
+    let grad = getGradient();
+    for (let i = 0; i < grad.length; i++) {
+        url += `c=${rgbToHex(grad[i])}` + ((i < grad.length-1) ? "&" : "");
+    }
+    return url;
+}
+
+const LANG = {
+    JS_ARRAY: 0,
+    JS_OBJ: 10,
+    CSS_GRAD: 20,
+    JAVA_ARRAY: 30,
+    JAVA_COLOR: 40,
+    CPP_ARRAY: 50,
+};
+const LANG_NAME = {
+    JS_ARRAY: "JS 2D array",
+    JS_OBJ: "JS object array",
+    CSS_GRAD: "CSS gradient",
+    JAVA_ARRAY: "Java 2D array",
+    JAVA_COLOR: "Java 'Color' objects",
+    CPP_ARRAY: "C/C++ 2D array",
+};
+let lang = LANG.JS_ARRAY;
+function updateCode() {
+    let text = " ";
+    let grad = getGradient();
+    if (lang === LANG.JS_ARRAY) {
+        text = "let gradient = [\n";
+        for (let i = 0; i < grad.length; i++) {
+            text += `\t[${grad[i][0]}, ${grad[i][1]}, ${grad[i][2]}]` + ((i < grad.length-1) ? "," : "") + "\n";
+        }
+        text += "];"
+    } else if (lang === LANG.JS_OBJ) {
+        text = "let gradient = [\n";
+        for (let i = 0; i < grad.length; i++) {
+            text += `\t{r: ${grad[i][0]}, g: ${grad[i][1]}, b: ${grad[i][2]}}` + ((i < grad.length-1) ? "," : "") + "\n";
+        }
+        text += "];"
+    } else if (lang === LANG.CSS_GRAD) {
+        text = "linear-gradient(";
+        for (let i = 0; i < grad.length; i++) {
+            text += `rgb(${grad[i][0]}, ${grad[i][1]}, ${grad[i][2]})` + ((i < grad.length-1) ? ", " : "");
+        }
+        text += ");"
+    } else if (lang === LANG.JAVA_ARRAY) {
+        text = "int[][] gradient = {\n";
+        for (let i = 0; i < grad.length; i++) {
+            text += `\t{${grad[i][0]}, ${grad[i][1]}, ${grad[i][2]}}` + ((i < grad.length-1) ? "," : "") + "\n";
+        }
+        text += "};"
+    } else if (lang === LANG.JAVA_COLOR) {
+        text = "Color[] gradient = {\n";
+        for (let i = 0; i < grad.length; i++) {
+            text += `\tnew Color(${grad[i][0]}, ${grad[i][1]}, ${grad[i][2]})` + ((i < grad.length-1) ? "," : "") + "\n";
+        }
+        text += "};"
+    } else if (lang === LANG.CPP_ARRAY) {
+        text = `int gradient[${grad.length}][3] = {\n`;
+        for (let i = 0; i < grad.length; i++) {
+            text += `\t{${grad[i][0]}, ${grad[i][1]}, ${grad[i][2]}}` + ((i < grad.length-1) ? "," : "") + "\n";
+        }
+        text += "};"
+    }
+    $("#code").text(text);
+
+
+}
+
 function getGradient() {
     let grad = [];
     COLORS.forEach(color => grad.push(color.rgb));
@@ -62,7 +191,7 @@ function hexToRgb(hex) {
 }
 
 function rgbToHex(rgb) {
-    return "#" + ((1 << 24) + (rgb[0] << 16) + (rgb[1] << 8) + rgb[2]).toString(16).slice(1);
+    return ((1 << 24) + (rgb[0] << 16) + (rgb[1] << 8) + rgb[2]).toString(16).slice(1);
 }
 
 function HSVtoRGB(h, s, v) {

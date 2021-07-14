@@ -1,0 +1,30 @@
+@media only screen and (max-width: 600px) {
+    #title h1 {
+        font-size: larger;
+    }
+
+    #ui #adder {
+        flex: 0 0 10vw;
+    }
+
+    #menu {
+        width: 86%;
+        position: relative;
+    }
+    #menu input[type=text] {
+        font-size: large;
+    }
+    #menu #io * > label {
+        font-size: large;
+    }
+
+    #export {
+        position: relative;
+        left: 5%;
+        width: 90%;
+        margin-top: 2vmax;
+    }
+    #export .button {
+        font-size: large;
+    }
+}

@@ -1,0 +1,63 @@
+#export {
+    position: absolute;
+    left: 52.5%;
+    padding: 0;
+    margin: 0 5% 0 0;
+    box-shadow: 5px 5px 20px 5px rgb(20, 20, 20);
+}
+
+#export #code {
+    font-family: monospace;
+    font-size: large;
+    font-weight: bold;
+    color: var(--light-color);
+    background-color: var(--dark-color);
+    padding: 10px;
+    white-space: pre-wrap;
+    user-select: all;
+}
+
+#export #lang {
+    width: 100%;
+}
+
+#export .button {
+    padding: 10px;
+    text-align: center;
+    font-size: larger;
+
+    color: var(--dark-color);
+    background-color: var(--light-color);
+    border: solid 5px var(--dark-color);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+#export .button:hover {
+    color: var(--light-color);
+    background-color: var(--dark-color);
+}
+
+#export #export_group {
+    display: flex;
+    flex-direction: row;
+    height: 66px;
+    grid-gap: 0;
+}
+
+#export #export_group #copy {
+    flex-shrink: 1;
+}
+#export #export_group #copy img {
+    height: 100%;
+    transition: filter 0.2s;
+}
+#export #export_group #copy:hover img {
+    filter: invert();
+}
+
+#export #export_group #share {
+    flex-grow: 1;
+}
+#export #export_group #share span {
+    vertical-align: middle;
+}
